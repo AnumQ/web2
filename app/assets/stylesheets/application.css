@@ -127,9 +127,52 @@ body {
 	
 }
 
-#product p
+#product
 {	
-	margin: 0px 20px auto 100px;
+	width: 650px;
+	height: 450px;
+}
+
+#product-list
+{
+	position: relative;
+	float: left;
+	background-color: #FFFFF3;
+	height: 200px;
+	width: 200px;
+	margin: 0px 10px 10px 5px;
+}
+#product-list .pic
+{	
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+	background-color: ;
+}
+
+#product-list .price
+{	
+    float: right;
+}
+
+#product-list p
+{
+	margin-left: auto;
+    margin-right: auto;
+}
+
+#break
+{	
+	background-color: black;
+	width: 650px;
+	height: 1px;
+}
+
+#table
+{	
+	width: 650px;
+	display: block;
+	color: black;
 }
 /* Links */
 

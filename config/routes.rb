@@ -25,7 +25,6 @@ end
   match '/contact', :to => 'pages#contact', :as => 'contact' 
   
   match '/products', :to => 'products#index', :as => 'products'
-  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

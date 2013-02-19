@@ -1,7 +1,24 @@
 <h1>Listing products</h1>
 
+<div id="product">
+<% @products.each do |product| %>
+	<div id="product-list">
+		<div class="pic">
+		<%= image_tag product.photo.url(:thumb), :class => "pic" %>
+		<p> <%= product.name %> </p>
+		<p><%= product.description %></p>
+		<p class="price"><b>Price: <%= product.price %></b></p>
+		</div>
+	</div>
+<% end %>
+</div>
+
+<div id="break"> 
+</div>
+<span id="table">
 <table>
   <tr>
+	<th></th>
     <th>Name</th>
     <th>Description</th>
     <th>Price</th>
@@ -12,6 +29,7 @@
 
 <% @products.each do |product| %>
   <tr>
+	<td><%= image_tag product.photo.url(:thumb) %></td>
     <td><%= product.name %></td>
     <td><%= product.description %></td>
     <td><%= product.price %></td>
@@ -22,6 +40,5 @@
 <% end %>
 </table>
 
-<br />
-
+</span>
 <%= link_to 'New Product', new_product_path %>

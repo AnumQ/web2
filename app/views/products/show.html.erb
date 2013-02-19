@@ -1,19 +1,22 @@
 <div id="product">
 <p>
-  <b>Name:</b>
   <%= @product.name %>
+</p>
+<br/>
+<p>
+	<%= image_tag @product.photo.url(:medium) %>
 </p>
 <br/>
 <p>
   <b>Description:</b>
   <%= @product.description %>
 </p>
-<br/>
 <p>
   <b>Price:</b>
   <%= @product.price %>
 </p>
 <br/>
+
 <p>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %></p>
