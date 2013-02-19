@@ -13,3 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+document.getElementById("demo").innerHTML="My First JavaScript";

@@ -1,14 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>Lc</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>LC</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+ <link href="http://fonts.googleapis.com/css?family=Arvo|Open+Sans:400,300,700" rel="stylesheet" type="text/css" />
+<link href="" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
-
-<%= yield %>
-
+<div id="menu-wrapper">
+	<div id="menu">
+		<div id="menu-left">
+			<ul>
+				<li class="current_page_item"><a href="/home">Homepage</a></li>
+				<li><a href="/products">Products</a></li>
+				<li><a href="/about">About</a></li>
+				<li><a href="/contact">Contact</a></li>
+				<li><a href="/help">Help</a></li>
+			</ul>
+		</div>
+		<div id="menu-right">
+				<% if user_signed_in? %> 
+				<div class="button">
+				<%= button_to "Sign Out", sign_out_path, :class => "orange", :method => :get %> 
+				<%= link_to "My Account",edit_user_registration_path %>			
+				</div>				
+				                          
+				<% else %>
+				<div class="button">
+				<%= button_to "Sign In", sign_in_path, :class => "orange", :method => :get %>
+				</div>
+				<div class="button">
+				<p>Not Registered?  <%= link_to "Click here", sign_up_path, :class => "link" %> </p>
+				</div>
+				<% end %>
+		</div>
+	</div>	
+	<!-- end #menu -->
+</div>
+<div id="header-wrapper">
+	<div id="header">
+		<div id="logo">
+			<h1><a href="#">LB<span>Cover</span></a></h1>
+		</div>
+	</div>
+</div>
+<div id="wrapper">
+	<!-- end #header -->
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+				<div id="flash">
+					<p class="notice"><%= notice %></p>
+					<p class="alert"><%= alert %></p>  
+				</div>
+				<div id="content">
+     
+					<%= yield %>
+				</div>
+				<!-- end #content -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
+</div>
+<div id="footer">
+	<p>&copy; 2013 Sitename.com. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://www.freecsstemplates.org">FCT</a>.</p>
+</div>
+<!-- end #footer -->
 </body>
 </html>
