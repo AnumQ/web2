@@ -23,19 +23,14 @@
 				<li><a href="/help">Help</a></li>
 			</ul>
 		</div>
-		<div id="menu-right">
+		<div id="menu-right" class="button">
 				<% if user_signed_in? %> 
-				<div class="button">
-				<%= button_to "Sign Out", sign_out_path, :class => "orange", :method => :get %> 
-				<%= link_to "My Account",edit_user_registration_path %>			
-				</div>				
-				                          
+				<%= button_to "Sign Out", sign_out_path, :class => "button", :method => :get %>                     
 				<% else %>
 				<div class="button">
-				<%= button_to "Sign In", sign_in_path, :class => "orange", :method => :get %>
-				</div>
-				<div class="button">
-				<p>Not Registered?  <%= link_to "Click here", sign_up_path, :class => "link" %> </p>
+				<%= button_to "Sign In", sign_in_path, :class => "button", :method => :get %>
+				<br/>
+				<%= link_to "Sign Up", sign_up_path, :class => "button" %>
 				</div>
 				<% end %>
 		</div>
@@ -58,8 +53,7 @@
 					<p class="notice"><%= notice %></p>
 					<p class="alert"><%= alert %></p>  
 				</div>
-				<div id="content">
-     
+				<div id="content">     
 					<%= yield %>
 				</div>
 				<!-- end #content -->
