@@ -1,6 +1,9 @@
 Lc::Application.routes.draw do
   
 	
+  resources :products
+
+
   root :to => "pages#home"
   devise_for :users 
   resources :users
@@ -20,6 +23,8 @@ end
   match '/help', :to => 'pages#help', :as => 'help'
   match '/about', :to => 'pages#about', :as => 'about'
   match '/contact', :to => 'pages#contact', :as => 'contact' 
+  
+  match '/products', :to => 'products#index', :as => 'products'
   
 
   # The priority is based upon order of creation:
