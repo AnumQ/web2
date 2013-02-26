@@ -5,9 +5,10 @@
 	<div id="product-list">
 		<div class="pic">
 		<%= image_tag product.photo.url(:thumb), :class => "pic" %>
-		<p> <%= product.name %> </p>
+		<p> <%= link_to product.name, product %> </p>
 		<p><%= product.description %></p>
-		<p class="price"><b>Price: <%= product.price %></b></p>
+		<p class="price"><b>Price: £<%= sprintf("%.2f", product.price) %></b></p>
+		</br>
 		</div>
 	</div>
 <% end %>
@@ -32,7 +33,7 @@
 	<td><%= image_tag product.photo.url(:thumb) %></td>
     <td><%= product.name %></td>
     <td><%= product.description %></td>
-    <td><%= product.price %></td>
+    <td>£<%= sprintf("%.2f", product.price) %></td>
     <td><%= link_to 'Show', product %></td>
     <td><%= link_to 'Edit', edit_product_path(product) %></td>
     <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,31 +1,25 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <title>LC</title>
+<title>e-shop</title>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
- <link href="http://fonts.googleapis.com/css?family=Arvo|Open+Sans:400,300,700" rel="stylesheet" type="text/css" />
-<link href="" rel="stylesheet" type="text/css" media="screen" />
-</head>
 <body>
-<div id="menu-wrapper">
-	<div id="menu">
-		<div id="menu-left">
-			<ul>
-				<li class="current_page_item"><a href="/home">Homepage</a></li>
-				<li><a href="/products">Products</a></li>
-				<li><a href="/about">About</a></li>
-				<li><a href="/contact">Contact</a></li>
-				<li><a href="/help">Help</a></li>
-			</ul>
-		</div>
-		<div id="menu-right" class="button">
+<div id="container">
+	<div id="masthead">
+		<%= link_to 'Home', '/home' %>
+		<%= link_to 'Products', '/products' %>
+		<%= link_to 'Contact', '/contact' %>
+		<%= link_to 'About', '/about' %>
+		<%= link_to 'Help', '/help' %>
+		<div id="mast-right">
 				<% if user_signed_in? %> 
-				<%= button_to "Sign Out", sign_out_path, :class => "button", :method => :get %>                     
+				<div class="button">
+				<%= button_to "Sign Out", sign_out_path, :class => "button", :method => :get %> 
+				
+				<%= link_to "My Account", edit_user_registration_path %>
+				</div>
 				<% else %>
 				<div class="button">
 				<%= button_to "Sign In", sign_in_path, :class => "button", :method => :get %>
@@ -34,38 +28,38 @@
 				</div>
 				<% end %>
 		</div>
-	</div>	
-	<!-- end #menu -->
-</div>
-<div id="header-wrapper">
-	<div id="header">
-		<div id="logo">
-			<h1><a href="#">LB<span>Cover</span></a></h1>
-		</div>
 	</div>
-</div>
-<div id="wrapper">
-	<!-- end #header -->
-	<div id="page">
-		<div id="page-bgtop">
-			<div id="page-bgbtm">
-				<div id="flash">
-					<p class="notice"><%= notice %></p>
-					<p class="alert"><%= alert %></p>  
-				</div>
-				<div id="content">     
-					<%= yield %>
-				</div>
-				<!-- end #content -->
-				<div style="clear: both;">&nbsp;</div>
-			</div>
-		</div>
+	<% if notice != nil %> 
+	<div id="flash">
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p> 
 	</div>
-	<!-- end #page -->
+	<% else %>
+	<% end %>
+	
+   <div id="navigation">
+      <p><a href="index.htm">Home</a></p>
+      <p><a href="clothes.htm">Clothes</a></p>
+      <p><a href="electronics.htm">Electrical</a></p>
+      <p><a href="books.htm">DVD and Blu-Ray</a></p>
+      <p><a href="music.htm">Music</a></li>
+      <p><a href="video.htm">Shopping Cart</a></p>
+      <p><a href="account.htm">Manage Account</a></p>
+   </div>	
+   <div id="content">
+		<%= yield %>
+   </div>
+   
+   <div id="footer">
+      <p><a href="index.htm">Home</a> | 
+      <a href="clothes.htm">Clothes</a> |
+      <a href="electronics.htm">Electrical</a> |
+      <a href="books.htm">DVD/Blu-Ray</a> |
+      <a href="music.htm">Music</a> |
+      <a href="video.htm">Shopping Cart</a> |
+      <a href="account.htm">Manage Account</a></p>
+   </div>
+
 </div>
-<div id="footer">
-	<p>&copy; 2013 Sitename.com. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://www.freecsstemplates.org">FCT</a>.</p>
-</div>
-<!-- end #footer -->
 </body>
 </html>

@@ -2,6 +2,30 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+ <div class="field">
+    <%= f.label :FirstName %>
+    <%= f.text_field :firstName %>
+  </div><br />
+  <div class="field">
+    <%= f.label :LastName %>
+    <%= f.text_field :secondName %>
+  </div>  <br />
+  <div class="field">
+    <%= f.label :AddLine1 %>
+    <%= f.text_field :addressLine1 %>
+  </div><br />
+  <div class="field">
+    <%= f.label :AddLine2 %>
+    <%= f.text_field :addressLine2 %>
+  </div><br />
+  <div class="field">
+    <%= f.label :PostCode %>
+    <%= f.text_field :postCode %>
+  </div><br />
+  <div class="field">
+    <%= f.label :City %>
+    <%= f.text_field :city %>
+  </div><br />
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 

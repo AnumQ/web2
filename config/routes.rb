@@ -1,6 +1,9 @@
 Lc::Application.routes.draw do
   
 	
+  resources :orders
+  match '/createorder', :to => 'orders#create', :as => 'create_order'
+
   resources :products
 
 
