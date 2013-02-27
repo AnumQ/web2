@@ -1,11 +1,16 @@
 class AddAttachmentPhotoToProducts < ActiveRecord::Migration
   def self.up
-    change_table :products do |t|
-      t.attachment :photo
-    end
+    add_column :products, :photo_file_name, :string
+    add_column :products, :photo_content_type, :string
+    add_column :products, :photo_file_size, :integer
+    add_column :products, :photo_updated_at, :datetime
   end
 
   def self.down
-    drop_attached_file :products, :photo
+    remove_column :products, :photo_file_name
+    remove_column :products, :photo_content_type
+    remove_column :products, :photo_file_size
+    remove_column :products, :photo_updated_at
   end
 end
+
