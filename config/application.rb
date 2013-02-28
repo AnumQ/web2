@@ -42,6 +42,14 @@ module Lc
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
 
+      config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => ENV['aqBucket'],
+    :access_key_id => ENV['AKIAJNVHZEVTZHI2VGCA'],
+    :secret_access_key => ENV['+kjgvheCh2FKDcVXxEtzJN82+Ft+wy4VW8SvPIg4']
+  }
+}
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
     # like if you have constraints or database-specific column types

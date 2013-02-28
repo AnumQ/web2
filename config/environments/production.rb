@@ -21,7 +21,6 @@ Lc::Application.configure do
 
   # config/environments/production.rb
 
-
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
