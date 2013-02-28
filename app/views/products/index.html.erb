@@ -3,6 +3,7 @@
 <div id="product">
 <% @products.each do |product| %>
 	<div id="product-list">
+		<p><%= image_tag product.image_url(:thumb).to_s %></p>
 		<p> <%= link_to product.name, product %> </p>
 		<p><%= product.description %></p>
 		<p class="price"><b>Price: £<%= sprintf("%.2f", product.price) %></b></p>
@@ -24,6 +25,7 @@
 
 <% @products.each do |product| %>
   <tr>
+  	<td><%= image_tag product.image_url(:thumb).to_s %></td>
     <td><%= product.name %></td>
     <td><%= product.description %></td>
     <td>£<%= sprintf("%.2f", product.price) %></td>
