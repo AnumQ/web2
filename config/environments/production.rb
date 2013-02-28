@@ -20,14 +20,7 @@ Lc::Application.configure do
   config.assets.digest = true
 
   # config/environments/production.rb
-  config.paperclip_defaults = {
-  :storage => :s3,
-  :s3_credentials => {
-    :bucket => ENV['aqBucket'],
-    :access_key_id => ENV['AKIAJNVHZEVTZHI2VGCA'],
-    :secret_access_key => ENV['+kjgvheCh2FKDcVXxEtzJN82+Ft+wy4VW8SvPIg4']
-  }
-}
+
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH

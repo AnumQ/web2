@@ -3,12 +3,19 @@ class Product < ActiveRecord::Base
   
   has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100#" },
   					:url  => "/assets/products/:id/:style/:basename.:extension",
-                    :path => ":rails_root/public/assets/products/:id/:style/:basename.:extension"
-  
+                    :path => ":rails_root/public/assets/products/:id/:style/:basename.:extension",
+                    :storage => :s3,
+                    :bucket => ENV['aqBucket'],
+					:s3_credentials => {:access_key_id => ENV['AKIAJNVHZEVTZHI2VGCA'],
+										:secret_access_key => ENV['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']
+					  
+  					
  	
 
   validates_attachment_presence :photo
   validates_attachment_content_type :photo, :content_type => ['image/jpg', 'image/jpeg', 'image/png']
+  
+
   validates_uniqueness_of :name
   validates_length_of :name, :in => 1..255 
   validates_numericality_of :price
