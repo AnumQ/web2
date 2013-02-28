@@ -1,7 +1,0 @@
-<%= render :partial => "search_box" %>
-
-<% if @products %>
-<p>Your search "<%= params[:q] %>" produced 
-<%= pluralize @products.size, "result" %>:</p>
-<%= render(:partial => "products") %>
-<% end %>
