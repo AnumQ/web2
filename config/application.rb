@@ -45,7 +45,7 @@ module Lc
       config.paperclip_defaults = {
   :storage => :s3,
   :s3_credentials => {
-    :bucket => ENV['aqBucket'],
+    :bucket => ENV['aqBucket-assets'],
     :access_key_id => ENV['AKIAJNVHZEVTZHI2VGCA'],
     :secret_access_key => ENV['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']
   }
