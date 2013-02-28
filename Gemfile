@@ -26,8 +26,8 @@ end
 	
 gem 'jquery-rails', '2.0.2'
 gem 'devise'
-gem 'paperclip', '~> 3.0'
-gem 'aws-sdk'
+#gem 'paperclip', '~> 3.0'
+#gem 'aws-sdk'
 
 group :production do
   gem 'pg', '0.12.2'

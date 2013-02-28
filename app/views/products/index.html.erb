@@ -3,19 +3,13 @@
 <div id="product">
 <% @products.each do |product| %>
 	<div id="product-list">
-		<div class="pic">
-		<%= image_tag product.photo.url(:thumb), :class => "pic" %>
 		<p> <%= link_to product.name, product %> </p>
 		<p><%= product.description %></p>
 		<p class="price"><b>Price: £<%= sprintf("%.2f", product.price) %></b></p>
-		</br>
-		</div>
 	</div>
 <% end %>
 </div>
 
-<div id="break"> 
-</div>
 <span id="table">
 <table>
   <tr>
@@ -30,7 +24,6 @@
 
 <% @products.each do |product| %>
   <tr>
-	<td><%= image_tag product.photo.url(:thumb) %></td>
     <td><%= product.name %></td>
     <td><%= product.description %></td>
     <td>£<%= sprintf("%.2f", product.price) %></td>
