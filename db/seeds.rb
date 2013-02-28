@@ -6,4 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-#Product.create(name: 'Blue Jeans', description: 'Good quality jeans', price: '29', photo: 'img02.png' )
+Product.create(name: 'Blue Jeans', 
+			   description: 'Good quality jeans', 
+			   price: '29', 
+			   remote_image_url: 'http://cache.theoutnet.com/images/products/210405/210405_in_xl.jpg' )
+
+Product.create(name: 'Red Jeans', 
+			   description: 'Good quality jeans', 
+			   price: '29', 
+			   remote_image_url: 'http://www.coggles.com/product-media/4I71/2025/2700/Levis-Made-and-Crafted-Womens-Empire-High-0114-Jester-Red-Jeans-1.jpg' )
