@@ -6,12 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
 Product.create(name: 'Blue Jeans', 
 			   description: 'Good quality jeans', 
 			   price: '29', 
-			   remote_image_url: 'http://cache.theoutnet.com/images/products/210405/210405_in_xl.jpg' )
+			   image: (File.open(File.join(Rails.root, '/app/assets/images/img02.jpg')) )
 
-Product.create(name: 'Red Jeans', 
+
+
+Product.create(name: 'Brown Hat', 
 			   description: 'Good quality jeans', 
 			   price: '29', 
-			   remote_image_url: 'http://www.coggles.com/product-media/4I71/2025/2700/Levis-Made-and-Crafted-Womens-Empire-High-0114-Jester-Red-Jeans-1.jpg' )
+			   image: (File.open(File.join(Rails.root, '/app/assets/images/img05.png')) )
