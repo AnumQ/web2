@@ -10,11 +10,11 @@
 Product.create(name: 'Blue Jeans', 
 			   description: 'Good quality jeans', 
 			   price: '29', 
-			   image: (File.open(File.join(Rails.root, '/app/assets/images/img02.jpg')) )
+			   image: (File.open(File.join(Rails.root, '/app/assets/images/img02.jpg' ) ) ) )
 
 
 
 Product.create(name: 'Brown Hat', 
 			   description: 'Good quality jeans', 
 			   price: '29', 
-			   image: (File.open(File.join(Rails.root, '/app/assets/images/img05.png')) )
+			   image: (File.open(File.join(Rails.root, '/app/assets/images/img05.png')) ) )
