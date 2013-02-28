@@ -20,6 +20,18 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def cache_dir
+	"#{Rails.root}/tmp/uploads"
+  end
+
+  CarrierWave.configure do |config|
+    # hack fix for windows machine due to tmp file permission error
+     # per https://github.com/jnicklas/carrierwave/issues/220/
+     if ENV['RAILS_ENV'] != 'production'
+          config.delete_tmp_file_after_storage = false
+     end
+   end
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
@@ -40,7 +52,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_limit => [400, 400]
   end
   version :thumb do
-    process :resize_to_limit => [200, 200]
+    process :resize_to_limit => [100, 100]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
