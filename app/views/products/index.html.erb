@@ -20,7 +20,7 @@
 		</dl>
 	</td>
     <td><%= image_tag(product.image_url,:class=> 'list_image', :size => "50x50") %></td>
-    <td><%= product.price %></td>
+    <td><span class="price"><%=sprintf("£%0.02f",product.price)%></td>
     <td><%= link_to 'Show', product %></td>
     <td><%= link_to 'Edit', edit_product_path(product) %></td>
     <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

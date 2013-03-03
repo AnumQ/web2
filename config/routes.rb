@@ -1,9 +1,17 @@
 Lc::Application.routes.draw do
   
-	
+  resources :line_items
+
+
+  resources :carts
+
+
+  get "store/index"
+  root :to => 'store#index', :as => 'store'
+
   resources :products
   match '/products', :to => 'product#index', :as => 'products'
-  root :to => "pages#home"
+  
   devise_for :users 
   resources :users
   

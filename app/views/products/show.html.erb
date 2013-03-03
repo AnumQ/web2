@@ -11,13 +11,12 @@
 </p>
 
 <p>
-  <b>Image url:</b>
-  <%= image_tag(@product.image_url, :size => "50x50") %>
+  <%= image_tag(@product.image_url, :size => "100x100") %>
 </p>
 
 <p>
   <b>Price:</b>
-  <%= @product.price %>
+  <%= sprintf("£%0.02f", @product.price) %>
 </p>
 
 
