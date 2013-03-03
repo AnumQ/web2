@@ -1,9 +1,8 @@
 Lc::Application.routes.draw do
   
 	
-  resources :orders
-  match '/createorder', :to => 'orders#create', :as => 'create_order'
-
+  resources :products
+  match '/products', :to => 'product#index', :as => 'products'
   root :to => "pages#home"
   devise_for :users 
   resources :users
