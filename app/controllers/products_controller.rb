@@ -1,6 +1,15 @@
 class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
+  skip_before_filter :authorize
+  def who_bought
+	@product=Product.find(params[:id])
+	respond_to do |format|
+	  format.atom
+      format.xml{render :xml => @product }
+    end
+  end
+  
   def index
     @products = Product.all
 

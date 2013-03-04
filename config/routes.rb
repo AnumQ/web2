@@ -1,5 +1,8 @@
 Lc::Application.routes.draw do
   
+  resources :orders
+
+
   resources :line_items
 
 
@@ -7,19 +10,15 @@ Lc::Application.routes.draw do
 
 
   get "store/index"
-  root :to => 'store#index', :as => 'store'
+  root :to => 'store#index', :as => 'root'
+  match '/store', :to => 'store#index', :as => 'store'
 
   resources :products
+
   match '/products', :to => 'product#index', :as => 'products'
-  
-  devise_for :users 
-  resources :users
-  
-  devise_scope :user do
-    get "sign_in", :to => "devise/sessions#new"
-    get "sign_out", :to => "devise/sessions#destroy"
-    get "sign_up", :to => "devise/registrations#new"
-end
+  resources :products do
+	get :who_bought, :on => :member
+  end
 
   get "pages/home"
   get "pages/about"

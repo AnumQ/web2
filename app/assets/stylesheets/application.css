@@ -14,15 +14,29 @@ body
 #container
 {
 
-	width: 700px;
+	width: 1000px;
 
 	margin: 10px auto;
 
 }
 
-#store.cart_title{
-font:120%bold;
+#store
+{
+	background: red;
 }
+
+#title
+{
+	background-color: red;
+}
+
+
+#cart_title{
+	color: red;
+	background-color: red;
+	font-size: 20px;
+}
+
 #store.item_price,#store.total_line{
 text-align:right;
 }
