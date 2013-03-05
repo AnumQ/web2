@@ -14,7 +14,7 @@ body
 #container
 {
 
-	width: 1000px;
+	width: 838px;
 
 	margin: 10px auto;
 
@@ -22,9 +22,15 @@ body
 
 #store
 {
-	background: red;
 }
 
+#banner
+{
+	margin-right: auto;
+	margin-left: auto;
+	background-color:red;
+	width: 800px;
+}
 #title
 {
 	background-color: red;
@@ -50,7 +56,7 @@ border-top:1pxsolid#595;
 
 	text-align: center;
 
-	width: 680px;
+	width: 830px;
 
 	border-top: 5px solid ForestGreen;
 
@@ -70,6 +76,68 @@ border-top:1pxsolid#595;
 	margin-left: auto;
 	text-align: right;
 	width: 200px;
+}
+
+
+#sidebar
+{
+	text-align: left;
+
+	float: right;
+
+	width: 140px;
+
+    height: 500px;
+
+	margin-top: 10px;
+
+	margin-bottom: 10px;
+
+
+
+	border-top: 5px solid ForestGreen;
+
+	border-right: 5px solid ForestGreen;
+
+	border-bottom: 5px solid ForestGreen;
+
+	border-left: 5px solid ForestGreen;
+
+	background-color: LawnGreen;
+}
+
+
+#sidebar p
+{
+
+	color: Black;
+	text-decoration: none;
+
+	padding: 5px;
+
+}
+
+#sidebar a:hover
+{
+
+	color: White;
+
+	text-decoration: none;
+
+	border: 1px solid Black;
+
+	background-color: Black;
+
+}
+
+#cart, #cart table{
+	color: black;
+}
+
+#cart table{
+	border-top: 1px dotted #595;
+	border-bottom: 1px dotted #595;
+    margin-bottom: 10px;
 }
 
 #navigation
@@ -108,15 +176,16 @@ border-top:1pxsolid#595;
 
 	width: 500px;
 
-        height: 500px auto;
+    height: 500px auto;
 
 	margin-top: 10px;
 
 	margin-bottom: 10px;
 
-	margin-left: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
 
-        padding-left: 10px;
+    padding-left: 10px;
 
 	border-top: 5px solid ForestGreen;
 
@@ -138,7 +207,7 @@ border-top:1pxsolid#595;
 
 	clear: both;
 
-	width: 680px;
+	width: 830px;
 
 	padding-top: 5px;
 
@@ -249,7 +318,7 @@ border-top:1pxsolid#595;
 
 #flash 
 {
-	width: 680px;
+	width: 830px;
 	border-top: 5px solid ForestGreen;
 
 	border-right: 5px solid ForestGreen;

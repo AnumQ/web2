@@ -11,12 +11,24 @@
     </div>
   <% end %>
 
+  <div class="field"> 
+  	<strong>Name:</strong>
+  	<%= @user.name %>
+  </div>
+  <br/>
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, :size => 40 %>
+  	 <strong>Order details:</strong>
+  	 <table>
+  		<%=render(@cart.line_items)%>
+  			<tr class="total_line">
+  			<td colspan="2">Total</td>
+  			<td class="total_cell"><%= sprintf("£%0.02f",@cart.total_price)%></td>
+  </tr>
+</table>
+<br/>
   </div>
   <div class="field">
-    <%= f.label :address %><br />
+    <%= f.label :Shipping_address %><br />
     <%= f.text_area :address, :rows => 3, :cols => 40 %>
   </div>
   <div class="field">

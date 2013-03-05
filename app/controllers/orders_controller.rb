@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
-  skip_before_filter :authorize, :only => [ :new, :create ]
+  
   def index
     @orders = Order.all
 
@@ -32,6 +32,7 @@ class OrdersController < ApplicationController
 	end
     
     @order = Order.new
+    @user = current_user
 
     respond_to do |format|
       format.html # new.html.erb

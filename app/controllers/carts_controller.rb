@@ -3,6 +3,7 @@ class CartsController < ApplicationController
   # GET /carts.json
 
   skip_before_filter :authorize, :only => [ :create, :update, :destroy ]
+  
   def index
     @carts = Cart.all
 

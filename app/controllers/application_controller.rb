@@ -1,21 +1,25 @@
 class ApplicationController < ActionController::Base
   before_filter :authorize
+
   protect_from_forgery
 	
   private
+  	def current_user
+  		User.find(session[:user_id])
+  	end
   
     def current_cart
 		Cart.find(session[:cart_id])
 	rescue ActiveRecord::RecordNotFound
-		cart=Cart.create
-		session[:cart_id]=cart.id
+		cart = Cart.create
+		session[:cart_id] = cart.id
 		cart
 	end
 
   protected
  	def authorize
 	  unless User.find_by_id(session[:user_id])
-	  	redirect_to sign_in_url, :notice => "Please login"
+	  	redirect_to login_url, :notice => "Please login"
 	  end
 	end
 end
