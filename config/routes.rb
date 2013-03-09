@@ -1,30 +1,18 @@
 Lc::Application.routes.draw do
   
+  devise_for :users
+
+  devise_scope :user do
+    match '/login', :to => "devise/sessions#new", :as => 'login'
+    match '/logout', :to => "devise/sessions#destroy", :as => 'logout'
+    match '/signup', :to => "devise/registrations#new", :as => 'signup'
+  end  
+
   get'admin'=> 'admin#index'
-  
-  controller :sessions do
-	  get 'login' => :new
-	  post'login' => :create
-	  delete 'logout' => :destroy
-  end
-  
-  get "sessions/new"
-
-  get "sessions/create"
-
-  get "sessions/destroy"
-
-  resources :users
-
 
   resources :orders
-
-
   resources :line_items
-
-
   resources :carts
-
 
   get "store/index"
   root :to => 'store#index', :as => 'root'

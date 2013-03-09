@@ -1,8 +1,4 @@
-	<h1>Store Catalog</h1>
-	<% if notice %>
-		<p id="notice"><%= notice %></p>
-	<% end %>
-	
+	<h1>Store Catalog</h1>	
 	<% @products.each do |product| %>
 	<div class="entry">
 		<%= image_tag(product.image_url) %>

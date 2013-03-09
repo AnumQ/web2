@@ -14,7 +14,7 @@ body
 #container
 {
 
-	width: 838px;
+	width: 840px;
 
 	margin: 10px auto;
 
@@ -186,6 +186,8 @@ border-top:1pxsolid#595;
 	margin-right: 10px;
 
     padding-left: 10px;
+
+    padding-bottom: 10px;
 
 	border-top: 5px solid ForestGreen;
 

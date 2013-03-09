@@ -1,9 +1,11 @@
 class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
-  
+  before_filter :authorize
+  before_filter :authorize_admin, :only => [ :index, :destroy ]
   def index
     @orders = Order.all
+    @line_items = LineItem.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,6 +27,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   # GET /orders/new.json
   def new
+  	@current_user = current_user
   	@cart = current_cart
 	if @cart.line_items.empty?
 	  redirect_to store_url, :notice => "Your cart is empty"
@@ -32,7 +35,7 @@ class OrdersController < ApplicationController
 	end
     
     @order = Order.new
-    @user = current_user
+    #@current_user = User.find(params[:current_user])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,7 +52,9 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(params[:order])
+	@order.user_id = current_user.id
     @order.add_line_items_from_cart(current_cart)
+    #@current_user = User.find(params[:current_user])
 
     respond_to do |format|
       if @order.save

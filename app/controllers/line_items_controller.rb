@@ -1,6 +1,7 @@
 class LineItemsController < ApplicationController
   # GET /line_items
   # GET /line_items.json
+  before_filter :authorize
    skip_before_filter :authorize, :only => :create
   def index
     @line_items = LineItem.all
@@ -43,12 +44,14 @@ class LineItemsController < ApplicationController
   def create
   	@cart = current_cart
   	product = Product.find(params[:product_id])
+  	@product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product.id)
-
+#{@user.name}
     respond_to do |format|
       if @line_item.save
-	    format.html{ redirect_to(store_url) }
-        format.xml {render :xml=> @line_item,
+	    format.html{ redirect_to(store_url, 
+		    :notice => "#{@product.title} was added to cart.") }
+        format.xml {render :xml=> @line_item, notice: 'Added item to cart.', 
 			:status => :created, :location => @line_item}
       else
 		format.html{render :action => "new" }

@@ -12,10 +12,10 @@
   <% end %>
 
   <div class="field"> 
-  	<strong>Name:</strong>
-  	<%= @user.name %>
+  	<strong>Name:</strong> 
+  	<%= current_user.fullname %>
   </div>
-  <br/>
+  
   <div class="field">
   	 <strong>Order details:</strong>
   	 <table>
@@ -23,22 +23,17 @@
   			<tr class="total_line">
   			<td colspan="2">Total</td>
   			<td class="total_cell"><%= sprintf("£%0.02f",@cart.total_price)%></td>
-  </tr>
-</table>
-<br/>
-  </div>
+  		
+	</table>
+  </div>	 
+  <br/>
+  
   <div class="field">
-    <%= f.label :Shipping_address %><br />
-    <%= f.text_area :address, :rows => 3, :cols => 40 %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, :size => 40 %>
   </div>
   <div class="field">
     <%= f.label :pay_type %><br />
     <%= f.select :pay_type, Order::PAYMENT_TYPES,
-    						:prompt => 'Select a payment method' %>
+    	:prompt => 'Select a payment method' %>
   </div>
   <div class="actions">
     <%= f.submit 'Place Order' %>

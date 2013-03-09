@@ -1,72 +1,18 @@
-require 'digest/sha2'
 class User < ActiveRecord::Base
-	has_many :orders
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
 
-  validates :name, :presence => true, :uniqueness => true
-  attr_accessible :password, :name, :password_confirmation
-  
+  has_many :orders
 
-  validates :password, :confirmation => true
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me, 
+  :fullname, :address1, :address2, :address3, :postcode, :city, :country, :phone, :admin
 
-	attr_accessor :password_confirmation
-	attr_reader :password
-	validate :password_must_be_present
+  validates_presence_of :fullname, :address1, :address2, :postcode, :city, :country, :phone
 
-
-	def signed_in_user
-      redirect_to login_url, notice: "Please sign in." unless signed_in?
-    end
-
-	def User.authenticate(name,password)
-	  if user=find_by_name(name)
-		if user.hashed_password == encrypt_password(password,user.salt)
-		  user
-		end
-	  end
-	end
-
-	def User.encrypt_password(password, salt)
-		Digest::SHA2.hexdigest(password+"wibble"+salt)
-	end
-
-	def password=(password)
-	  @password = password
-		if password.present?
-		generate_salt
-		self.hashed_password=self.class.encrypt_password(password, salt)
-	    end
-	end
-	
-	def current_user
-      @current_user ||= User.find_by_remember_token(cookies[:remember_token])
-    end
-	
-	after_destroy :ensure_an_admin_remains
-	def ensure_an_admin_remains
-	  if User.count.zero?
-	    raise "Can't deletelastuser"
-	  end
-	end
-	
-	private
-	  def password_must_be_present
-		errors.add(:password,"Missing password") unless hashed_password.present?
- 	  end
-
- 	  def generate_salt
-		self.salt=self.object_id.to_s+rand.to_s
-	  end
-
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to login_url, notice: "Please sign in."
-      end
-    end
-
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
-    end
-  end
+  # attr_accessible :title, :body
+end

@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
-
+  before_filter :authorize
+  before_filter :authorize_admin
   def who_bought
 	@product=Product.find(params[:id])
 	respond_to do |format|

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304145435) do
+ActiveRecord::Schema.define(:version => 20130305193353) do
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -28,12 +28,12 @@ ActiveRecord::Schema.define(:version => 20130304145435) do
   end
 
   create_table "orders", :force => true do |t|
-    t.string   "name"
-    t.text     "address"
-    t.string   "email"
+    t.text     "order_details"
+    t.integer  "user_id"
+    t.integer  "cart_id"
     t.string   "pay_type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "products", :force => true do |t|
@@ -46,11 +46,30 @@ ActiveRecord::Schema.define(:version => 20130304145435) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "hashed_password"
-    t.string   "salt"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.string   "fullname",               :default => "",               :null => false
+    t.string   "address1",               :default => "",               :null => false
+    t.string   "address2",               :default => "",               :null => false
+    t.string   "address3"
+    t.string   "postcode",               :default => "",               :null => false
+    t.string   "city",                   :default => "",               :null => false
+    t.string   "country",                :default => "United Kingdom", :null => false
+    t.string   "phone",                  :default => "",               :null => false
+    t.string   "email",                  :default => "",               :null => false
+    t.string   "encrypted_password",     :default => "",               :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
+    t.boolean  "admin"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
