@@ -21,6 +21,7 @@
 	   		<% if current_user.admin? %>			
 			<%= link_to 'Products', products_path %>
 			<%= link_to 'Orders', orders_path %>
+			<%= link_to 'Users', users_path %>
 			<% end %>
 
 			<%= link_to 'Contact', contact_path %>
@@ -52,7 +53,7 @@
 	<% end %>
 	
    <div id="navigation">
-      <p><a href="index.htm">Home</a></p>
+      <p><a href="index.htm" onclick="this.style.backgroundColor='#990000'">Home</a></p>
       <p><a href="clothes.htm">Clothes</a></p>
       <p><a href="electronics.htm">Electrical</a></p>
       <p><a href="books.htm">DVD and Blu-Ray</a></p>

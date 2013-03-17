@@ -13,6 +13,17 @@ class OrdersController < ApplicationController
     end
   end
 
+  def orders_waiting_approval
+  	@orders = Order.where(:status => "Created" )
+    @line_items = LineItem.all
+
+        respond_to do |format|
+      format.html { render action: "orders_waiting_approval" }
+      format.json { render json: @orders }
+    end
+
+  end
+
   # GET /orders/1
   # GET /orders/1.json
   def show
@@ -52,6 +63,8 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(params[:order])
+    @order.status = Order::STATUS_TYPES[0]
+ 
 	@order.user_id = current_user.id
     @order.add_line_items_from_cart(current_cart)
     #@current_user = User.find(params[:current_user])
@@ -97,5 +110,19 @@ class OrdersController < ApplicationController
       format.html { redirect_to orders_url }
       format.json { head :no_content }
     end
+  end
+
+  def approve
+  	@order = Order.find(params[:id])
+
+  	respond_to do |format|
+      if @order.update_attributes(:status => Order::STATUS_TYPES[2])
+        format.html { redirect_to(orders_url, :notice => 'Order approved.') }
+        format.xml  { head :ok }
+      else
+      	format.html { render action: "index" }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end  
+     end
   end
 end

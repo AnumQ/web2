@@ -2,36 +2,35 @@
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
+
+  <div><%= f.label :email %><br/>
+  <%= f.email_field :email, :autofocus => true %><div id="super">*</div></div>
   <div><%= f.label :fullname %><br />
-  <%= f.text_field :fullname %></div>
+  <%= f.text_field :fullname %><a>*</a></div>
 
   <div><%= f.label :address %><br />
-  <%= f.text_field :address1 %><br />
-  <%= f.text_field :address2 %><br />
+  <%= f.text_field :address1 %><a>*</a><br />
+  <%= f.text_field :address2 %><a>*</a><br />
   <%= f.text_field :address3 %></div>
 
   <div><%= f.label :postcode %><br />
-  <%= f.text_field :postcode %></div>
+  <%= f.text_field :postcode %><a>*</a></div>
 
   <div><%= f.label :city %><br />
-  <%= f.text_field :city %></div>
+  <%= f.text_field :city %><a>*</a></div>
 
   <div><%= f.label :country %><br />
-  <%= f.text_field :country %></div>
-
+  <%= f.text_field :country %><a>*</a></div>
 
   <div><%= f.label :phone %><br />
   <%= f.number_field :phone %></div>
 
-  <div><%= f.label :email %><br/>
-  <%= f.email_field :email, :autofocus => true %></div>
-
 
   <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <%= f.password_field :password %><a>*</a></div>
 
   <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <%= f.password_field :password_confirmation %><a>*</a></div>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>

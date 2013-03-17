@@ -1,0 +1,33 @@
+<table>
+  <tr>
+    <th>User</th>
+    <th>Name</th>
+    <th>Order details</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @orders.each do |order| %>
+  <tr>
+    <td><%= order.user_id %></td>
+    
+    <td><% s = User.find_by_id(order.user_id) %><%= s.fullname %></td>
+    <td>
+	  <% order.line_items.each do |l| %>
+	  	<%= l.product.title %> x <%= l.quantity %>
+	  <% end %>
+    </td> 
+	
+    
+    <td><%= order.status %></td>
+    <% if order.status != "Approved" %>
+    <td><%= link_to 'Approve', order_approve_path(order), :method => :post %></td>
+    <% end %>
+    <td><%= link_to 'Show', order %></td>
+    <td><%= link_to 'Edit', edit_order_path(order) %></td>
+    <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>

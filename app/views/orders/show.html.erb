@@ -1,23 +1,38 @@
 <p>
   <b>Name:</b>
-  <%= @order.name %>
+  <%= @order.user.fullname %>
 </p>
 
 <p>
-  <b>Address:</b>
-  <%= @order.address %>
+  <b>Address:</b><br />
+  <%= @order.user.address1 %><br />
+  <%= @order.user.address2 %><br />
+  <% if @order.user.address3.nil? %>
+  <% else %>
+  <%= @order.user.address3 %><br />
+  <% end %>
+  <%= @order.user.postcode %><br />
+  <%= @order.user.city %>
 </p>
 
 <p>
-  <b>Email:</b>
-  <%= @order.email %>
+  <b>Order details:</b><br />
+  <table>
+  		<%=render(@order.line_items)%>
+  			<tr class="total_line">
+  			<td colspan="2">Total</td>
+  			<td class="total_cell"><%= sprintf("£%0.02f",@order.total_price)%></td>
+  		
+   </table>
 </p>
 
 <p>
-  <b>Pay type:</b>
-  <%= @order.pay_type %>
+  <b>Order status:</b><br />
+  <%= @order.status %>
 </p>
 
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
+
+

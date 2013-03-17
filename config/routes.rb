@@ -8,9 +8,15 @@ Lc::Application.routes.draw do
     match '/signup', :to => "devise/registrations#new", :as => 'signup'
   end  
 
+  resources :user, :controller => "user"
+  get 'user/edit'
+
+  match "/users/", :to => "user#index", :as => "users"
+  match "/owa/", :to => "orders#orders_waiting_approval", :as => "owa"
   get'admin'=> 'admin#index'
 
   resources :orders
+  post "orders/:id/approve" => "orders#approve", :as => 'order_approve' 
   resources :line_items
   resources :carts
 

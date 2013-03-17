@@ -1,6 +1,51 @@
 <h1>Editing order</h1>
 
-<%= render 'form' %>
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field"> 
+  	<strong>Name:</strong> 
+  	<%= current_user.fullname %>
+  </div>
+  
+  <div class="field"> 
+  	<strong>Address:</strong> 
+  	<%= current_user.address1 %>, <%= current_user.address2 %>, <%= current_user.address3 %>, <%=current_user.postcode  %>
+  </div>
+  <div class="field">
+  	 <strong>Order details:</strong>
+  	 <table>
+  		<%=render(@order.line_items)%>
+  			<tr class="total_line">
+  			<td colspan="2">Total</td>
+  			<td class="total_cell"><%= sprintf("£%0.02f",@order.total_price)%></td>
+  		
+	</table>
+  </div>	 
+  <br/>
+  
+  <div class="field">
+  </div>
+  <div class="field">
+    <%= f.label :pay_type %><br />
+    <%= f.select :pay_type, Order::PAYMENT_TYPES,
+    	:prompt => 'Select a payment method' %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Confirm' %>
+  </div>
+<% end %>
+
 
 <%= link_to 'Show', @order %> |
 <%= link_to 'Back', orders_path %>

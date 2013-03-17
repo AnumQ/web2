@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
   :fullname, :address1, :address2, :address3, :postcode, :city, :country, :phone, :admin
 
-  validates_presence_of :fullname, :address1, :address2, :postcode, :city, :country, :phone
+  validates_presence_of :fullname, :address1, :address2, :postcode, :city, :country
 
   # attr_accessible :title, :body
 end
