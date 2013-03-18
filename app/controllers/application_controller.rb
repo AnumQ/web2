@@ -1,11 +1,9 @@
 class ApplicationController < ActionController::Base
-  #
   #before_filter :authorize_admin
-
   protect_from_forgery
-	
-  private
+  before_filter :initialize_cart
   
+  private   	
     def current_cart
 		Cart.find(session[:cart_id])
 	rescue ActiveRecord::RecordNotFound
@@ -19,6 +17,14 @@ class ApplicationController < ActionController::Base
 	end
 
   protected
+  	def initialize_cart
+  		Cart.find(session[:cart_id])
+		rescue ActiveRecord::RecordNotFound
+		cart = Cart.create
+		session[:cart_id] = cart.id
+		cart
+  	end
+
  	def authorize
 	  unless user_signed_in?
 	  	redirect_to login_path, :method => :get, :notice => "Please login"

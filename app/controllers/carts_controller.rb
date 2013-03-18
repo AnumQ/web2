@@ -1,8 +1,21 @@
 class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
+  layout 'default'
   before_filter :authorize
-  skip_before_filter :authorize, :only => [ :create, :update, :destroy ]
+  skip_before_filter :authorize, :only => [ :display_cart, :create, :update, :destroy ]
+  
+
+  def display_cart
+  	@title = "Your Shopping Basket"
+  	@cart = current_cart
+
+    respond_to do |format|
+      format.html { render action: "show" }
+      format.json { render json: @cart }
+    end
+  end
+
   def index
     @carts = Cart.all
 

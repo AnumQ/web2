@@ -15,4 +15,14 @@ class User < ActiveRecord::Base
   validates_presence_of :fullname, :address1, :address2, :postcode, :city, :country
 
   # attr_accessible :title, :body
+
+  def total_price
+  	@cart = current_cart
+	@cart.line_items.to_a.sum { |item| item.total_price }
+  end
+
+  def total
+  	@cart = current_cart
+	@cart.line_items.to_a.sum { |item| item.quantity }
+  end
 end

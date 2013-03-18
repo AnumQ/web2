@@ -10,5 +10,9 @@ class LineItem < ActiveRecord::Base
 	product.price*quantity
   end
 
+  def total
+	line_items.to_a.sum { |item| item.quantity }
+  end
+
 
 end

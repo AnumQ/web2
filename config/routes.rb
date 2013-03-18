@@ -13,7 +13,10 @@ Lc::Application.routes.draw do
 
   match "/users/", :to => "user#index", :as => "users"
   match "/owa/", :to => "orders#orders_waiting_approval", :as => "owa"
-  get'admin'=> 'admin#index'
+  match "/display_cart", :to => "carts#display_cart", :as => "display_cart"
+  match "/product_details", :to => "products#show", :as => "product_details"
+  post "/destroy_product", :to => "products#destroy", :as => "destroy_product"	
+	  get'admin'=> 'admin#index'
 
   resources :orders
   post "orders/:id/approve" => "orders#approve", :as => 'order_approve' 

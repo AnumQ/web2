@@ -2,7 +2,9 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   before_filter :authorize
+  skip_before_filter :authorize, :only => [ :show ]
   before_filter :authorize_admin
+  skip_before_filter :authorize_admin, :only => [ :show ]
   def who_bought
 	@product=Product.find(params[:id])
 	respond_to do |format|
@@ -12,6 +14,7 @@ class ProductsController < ApplicationController
   end
   
   def index
+  	@title = "Listing Products"
     @products = Product.all
 
     respond_to do |format|
@@ -23,7 +26,10 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+  	
+  	@cart = current_cart
     @product = Product.find(params[:id])
+    @title = "#{@product.title}"
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,6 +40,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   # GET /products/new.json
   def new
+  	@title = "New Product"
     @product = Product.new
 
     respond_to do |format|

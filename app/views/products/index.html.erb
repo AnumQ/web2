@@ -1,10 +1,9 @@
-<h1>Listing products</h1>
-
+<div id="listing">
 <table>
   <tr>
-    <th>Title</th>
-    <th>Image</th>
-    <th>Price</th>
+    <th><b>Title</b></th>
+    <th><b>Image</b></th>
+    <th><b>Price</b></th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,16 +13,16 @@
   <tr class="<%=cycle('list_line_odd','list_line_even')%>">
     <td ds\class="list_description">
 		<dl>
-			<dt><strong><%=product.title%></strong></dt>
+			<dt><%=product.title%></dt>
 			<dt><%=truncate(strip_tags(product.description),
 			:length=>80)%></dt>
 		</dl>
 	</td>
-    <td><%= image_tag(product.image_url,:class=> 'list_image', :size => "50x50") %></td>
+    <td><%= image_tag(product.image_url, :class=> 'list_image', :size => "50x50") %></td>
     <td><span class="price"><%=sprintf("£%0.02f",product.price)%></td>
     <td><%= link_to 'Show', product %></td>
     <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= button_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
@@ -31,3 +30,4 @@
 <br />
 
 <%= link_to 'New Product', new_product_path %>
+</div>

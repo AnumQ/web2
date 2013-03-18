@@ -37,13 +37,6 @@ Product.create(:title=>'Jeans',
 				:description=> 'Blue',
 				:image_url=> (File.join(Rails.root, '/app/assets/images/img02.jpg' ) ),
 				:price=> 49.50)
-
-
-Product.create(:title=>'Hat',
-				:description=> 'Brown',
-				:image_url=> 'http://i1310.photobucket.com/albums/s644/aqpic2010/img09_zps8314c27e.png' ,
-				:price=> 49.50)
-
 #Product.create(name: 'Blue Jeans', 
 #			   description: 'Good quality jeans', 
 #			   price: '29', 
