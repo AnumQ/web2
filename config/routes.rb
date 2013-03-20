@@ -10,13 +10,11 @@ Lc::Application.routes.draw do
 
   resources :user, :controller => "user"
   get 'user/edit'
-  put "/orders_approve", :to => "orders#approve", :as => 'approve'
+  match "/orders/:id/approve", :to => "orders#approve", :as => 'approve'
   match "/users/", :to => "user#index", :as => "users"
   match "/owa/", :to => "orders#orders_waiting_approval", :as => "owa"
-  match "/display_cart", :to => "carts#display_cart", :as => "display_cart"
-  match "/product_details", :to => "products#show", :as => "product_details"
-  post "/destroy_product", :to => "products#destroy", :as => "destroy_product"	
-	  get'admin'=> 'admin#index'
+  match "/display_cart", :to => "carts#display_cart", :as => "display_cart"	
+  get '/admin'=> 'admin#index'
 
   resources :orders
   resources :line_items

@@ -400,7 +400,7 @@ span.label-right { display: block; float: left; width: 32px; height: 42px; backg
 	background-clip: padding-box;
 	border-radius: 6px;
 
-	background-image: -webkit-linear-gradient(bottom, #AFEEEE 0%, #F2F2F2 100%);
+	background-image: -webkit-linear-gradient(bottom, #3399FF 0%, #F2F2F2 100%);
 	background-image: -moz-linear-gradient(bottom, #3399FF 0%, #F2F2F2 100%);
 	background-image: -o-linear-gradient(bottom, #3399FF 0%, #F2F2F2 100%);
 	background-image: -ms-linear-gradient(bottom, #3399FF 0%, #F2F2F2 100%);

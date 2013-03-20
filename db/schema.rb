@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20130316005907) do
     t.string   "postcode",               :default => "",               :null => false
     t.string   "city",                   :default => "",               :null => false
     t.string   "country",                :default => "United Kingdom", :null => false
-    t.string   "phone",                  :default => "",               :null => false
+    t.string   "phone"
     t.string   "email",                  :default => "",               :null => false
     t.string   "encrypted_password",     :default => "",               :null => false
     t.string   "reset_password_token"
