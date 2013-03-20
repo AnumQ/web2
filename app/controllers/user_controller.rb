@@ -2,6 +2,7 @@ class UserController < ApplicationController
   #load_and_authorize_resource
   before_filter :authorize_admin
   def index
+  	@title = "Listing all users"
     @users = User.all
   end
   

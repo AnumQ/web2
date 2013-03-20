@@ -1,17 +1,17 @@
-<div id="listing">
+<div class="CSSTableGenerator">
 <table>
   <tr>
-    <th><b>Title</b></th>
-    <th><b>Image</b></th>
-    <th><b>Price</b></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <td><b>Title</b></td>
+    <td><b>Image</b></td>
+    <td><b>Price</b></td>
+    <td>Show</td>
+    <td>Edit</td>
+    <td>Destroy</td>
   </tr>
 
 <% @products.each do |product| %>
   <tr class="<%=cycle('list_line_odd','list_line_even')%>">
-    <td ds\class="list_description">
+    <td class="list_description">
 		<dl>
 			<dt><%=product.title%></dt>
 			<dt><%=truncate(strip_tags(product.description),
@@ -19,15 +19,14 @@
 		</dl>
 	</td>
     <td><%= image_tag(product.image_url, :class=> 'list_image', :size => "50x50") %></td>
-    <td><span class="price"><%=sprintf("£%0.02f",product.price)%></td>
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= button_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><span class="price"><%=sprintf("£%0.02f",product.price)%></span></td>
+    <td><%= link_to 'Show', product, :class => "log-button2" %></td>
+    <td><%= link_to 'Edit', edit_product_path(product), :class => "log-button2" %></td>
+    <td><%= button_to 'Destroy', product, method: :delete, :class => "button2", data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
-
+</div>
 <br />
 
-<%= link_to 'New Product', new_product_path %>
-</div>
+<%= link_to 'Create New Product', new_product_path %>

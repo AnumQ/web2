@@ -4,7 +4,7 @@
 <title><%= full_title(yield(:title)) %></title>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <%= stylesheet_link_tag "style", "jquery.jscrollpane", :media => "all" %>
-  <%= javascript_include_tag "jquery-1.7.min", "DD_belatedPNG-min", "jquery.jscrollpane.min", "jquery.jcarousel", "functions"  %>
+  <%= javascript_include_tag "simpleCart", "simpleCart.min", "jquery-1.7.min", "DD_belatedPNG-min", "jquery.jscrollpane.min", "jquery.jcarousel", "functions"  %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tags %>
 <body>
@@ -34,15 +34,20 @@
 					<% if user_signed_in? %> 
 					<div id="nav-log">
 						<div id="login">
-						  <a href="/logout">Log out</a>
+						  <%= button_to('Logout', destroy_user_session_path, :method => :delete, :class => 'log-button' )  %>
+						</div> 
+						<div id="register">
 						  <p>Welcome <%= link_to current_user.email, edit_user_registration_path %></p>
-						</div> 		
+						</div>		
 					</div>					 	
 					<% else %>
 					<div id="nav-log">
 						<div id="login" >
-						  <%= link_to('Login', new_user_session_path, :method => :get )  %>
-						  <p> Not registered? Please <%= link_to('Register', new_user_registration_path)  %></p>
+						  <%= button_to('Login', new_user_session_path, :method => :get, :class => 'log-button' )  %>
+						  
+						</div>
+						<div id="register">
+						<p> Not registered? Please <%= link_to('Register', new_user_registration_path)  %></p>
 						</div>
 					</div>
 					<% end %>	
@@ -54,7 +59,7 @@
 							<div class="label-bg">						
 							<ul>
 								<li>
-									<a title="Home"  class="default" href="/products">Products</a>							
+									<a title="Store"  class="default" href="/products">Products</a>							
 									<div class="dd">
 										<ul>
 											<li><a title="Product" href="#">Jeans</a></li>
@@ -71,7 +76,7 @@
 									<a title="Orders"  class="default" href="#">Orders</a>
 									<div class="dd">
 										<ul>
-											<li><a title="All Orders" href="#">All Orders</a></li>
+											<li><a title="All Orders" href="/orders">All Orders</a></li>
 											<li><a title="Order Waiting Approval" href="#">Signed off</a></li>
 											<li><a title="Approved Orders" href="#">Waiting Approval</a></li>
 											<li><a title="Cancelled orders" href="#">Cancelled Orders</a></li>												
@@ -90,7 +95,7 @@
 								</li>
 								<% else %>
 								<li>
-									<a title="Home" class="default" href="/products">Products</a>							
+									<a title="Store" class="default" href="/products">Products</a>							
 									<div class="dd">
 										<ul>
 											<li><a title="Product" href="#">Jeans</a></li>

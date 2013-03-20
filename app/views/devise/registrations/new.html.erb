@@ -1,38 +1,65 @@
 <% provide(:title, "Sign Up") %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br/>
-  <%= f.email_field :email, :autofocus => true %><div id="super">*</div></div>
-  <div><%= f.label :fullname %><br />
-  <%= f.text_field :fullname %><a>*</a></div>
+<%= form_for(resource, :validate => true, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<div id="error-messages">
+<%= devise_error_messages! %>
+</div>
+<div id="session2">
+  <div id="slick-login" class="register">
+	<div id="fields"><p><%= f.label :email %></p></div>
+		<div id="text-position">			
+		  <%= f.email_field :email, :validate => true, :autofocus => true, :class => "text", :placeholder => "example@example.com" %>
+		</div>
 
-  <div><%= f.label :address %><br />
-  <%= f.text_field :address1 %><a>*</a><br />
-  <%= f.text_field :address2 %><a>*</a><br />
-  <%= f.text_field :address3 %></div>
+	<div id="fields"><%= f.label :fullname %></div>
+	<div id="text-position">
+		<%= f.text_field :fullname, :validate => true, :class => "text", :placeholder => "e.g John Johnson" %>
+	</div>
 
-  <div><%= f.label :postcode %><br />
-  <%= f.text_field :postcode %><a>*</a></div>
+	<div id="fields-3">
+	<%= f.label :address, :class => "label3" %></div>
+	<div id="text-position-3">
+		<%= f.text_field :address1, :class => "text" %>
+		</div>
+		<div id="text-position-3">
+		<%= f.text_field :address2, :class => "text" %>
+		</div>
+		<div id="text-position-3">
+		<%= f.text_field :address3, :class => "text" %>
+		</div>
+	
 
-  <div><%= f.label :city %><br />
-  <%= f.text_field :city %><a>*</a></div>
+	<div id="fields"><%= f.label :postcode %></div>
+	<div id="text-position">
+	  <%= f.text_field :postcode, :class => "text" %>
+	</div>
 
-  <div><%= f.label :country %><br />
-  <%= f.text_field :country %><a>*</a></div>
+	<div id="fields"><%= f.label :city %></div>
+	<div id="text-position">
+	  <%= f.text_field :city, :class => "text" %>
+	</div>
 
-  <div><%= f.label :phone %><br />
-  <%= f.number_field :phone %></div>
+	<div id="fields"><%= f.label :country %></div>
+	<div id="text-position">
+	  <%= f.text_field :country, :class => "text" %>
+	</div>
 
+	<div id="fields"><%= f.label :password %></div>
+	<div id="text-position">
+	  <%= f.password_field :password, :class => "password" %>
+	</div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %><a>*</a></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %><a>*</a></div>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+	<div id="fields"><%= f.label :password_confirmation %></div>
+	<div id="text-position">
+	  <%= f.password_field :password_confirmation, :class => "password" %>
+	</div>
+	<br />
+	<div id="text-position"> <%= f.submit "Sign up", :class => "submit" %> </div>
+	<% end %>
+	<br/>
+	<div id="text-position-4"> 
+	  <%= render "devise/shared/links" %>
+	</div>
+ 	</div>
+</div>

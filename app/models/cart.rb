@@ -8,7 +8,7 @@ class Cart < ActiveRecord::Base
   def total
 	line_items.to_a.sum { |item| item.quantity }
   end
-
+  
   def add_product(product_id)
 	current_item = line_items.find_by_product_id(product_id)
 	if current_item

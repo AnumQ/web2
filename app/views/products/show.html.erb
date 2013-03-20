@@ -1,23 +1,40 @@
-<p>
-  <b>Title:</b>
-  <%= @product.title %>
-</p>
+<div id="item">
+	<div id="image">
+	<p>
+	  <%= image_tag(@product.image_url, :size => "350x500") %>
+	</p>
+	</div>
+	
+	<div id="title">
+	<p>
+	  <b> Title:
+	  <%= @product.title %>
+	  </b>
+	</p>
+	
+	<p>
+	  <b>Description:</b>
+	  <%= @product.description %>
+	</p>
+	
+	<p>
+	  <b>Price:</b>
+	  <b><%= sprintf("£%0.02f", @product.price) %> </b>
+	</p>
+	
 
-<p>
-  <b>Description:</b>
-  <%= @product.description %>
-</p>
+	<%=button_to 'Add to Cart',line_items_path(:product_id => @product),  :class => 'button' %>
 
-<p>
-  <%= image_tag(@product.image_url, :size => "100x100") %>
-</p>
-
-<p>
-  <b>Price:</b>
-  <%= sprintf("£%0.02f", @product.price) %>
-</p>
-
-<%=button_to 'Add to Cart',line_items_path(:product_id => @product) %>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+	</br> 
+	<% if user_signed_in? %>
+	  <% if  current_user.admin? %>
+	   <%= link_to 'Edit', edit_product_path(@product) %> |
+	   <%= link_to 'Back', products_path %>
+	  <% else %>
+	  <%= link_to 'Back', store_path %>
+	  <% end %>
+	  <% else %> 
+	  <%= link_to 'Back', store_path %>
+	<% end %>
+   </div>
+</div>

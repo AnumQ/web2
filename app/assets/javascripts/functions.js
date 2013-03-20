@@ -47,11 +47,6 @@ $(function() {
     	$(this).css('background-position', '0 0');    	
     });
 
-    $(".product").click(function(){
-        window.location=$(this).find("a").attr("href");
-     return false;
-    });
-
     $('.scroll-pane').jScrollPane({
         showArrows: true,
         horizontalDragMinWidth: 28,

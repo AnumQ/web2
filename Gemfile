@@ -30,6 +30,7 @@ gem 'devise'
 #gem 'aws-sdk'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'client_side_validations'
 
 group :production do
   gem 'pg', '0.12.2'

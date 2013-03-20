@@ -10,7 +10,7 @@ Lc::Application.routes.draw do
 
   resources :user, :controller => "user"
   get 'user/edit'
-
+  put "/orders_approve", :to => "orders#approve", :as => 'approve'
   match "/users/", :to => "user#index", :as => "users"
   match "/owa/", :to => "orders#orders_waiting_approval", :as => "owa"
   match "/display_cart", :to => "carts#display_cart", :as => "display_cart"
@@ -19,7 +19,6 @@ Lc::Application.routes.draw do
 	  get'admin'=> 'admin#index'
 
   resources :orders
-  post "orders/:id/approve" => "orders#approve", :as => 'order_approve' 
   resources :line_items
   resources :carts
 

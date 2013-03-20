@@ -7,7 +7,7 @@ class CartsController < ApplicationController
   
 
   def display_cart
-  	@title = "Your Shopping Basket"
+  	@title = "Your Shopping Cart"
   	@cart = current_cart
 
     respond_to do |format|

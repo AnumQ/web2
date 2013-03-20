@@ -9,7 +9,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :postcode, :null => false, :default => ""
       t.string :city, :null => false, :default => ""
       t.string :country, :null => false, :default => "United Kingdom"
-      t.string :phone, :null => false, :default => ""
+      t.string :phone,
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""
 

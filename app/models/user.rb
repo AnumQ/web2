@@ -6,11 +6,12 @@ class User < ActiveRecord::Base
   has_many :orders
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable,
+         :validatable, :email_regexp =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
-  :fullname, :address1, :address2, :address3, :postcode, :city, :country, :phone, :admin
+  :fullname, :address1, :address2, :address3, :postcode, :city, :phone, :country, :admin
 
   validates_presence_of :fullname, :address1, :address2, :postcode, :city, :country
 

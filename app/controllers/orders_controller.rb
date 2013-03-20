@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   before_filter :authorize
   before_filter :authorize_admin, :only => [ :index, :destroy ]
   def index
+  	@title = "Listing all orders"
     @orders = Order.all
     @line_items = LineItem.all
 
@@ -14,6 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def orders_waiting_approval
+  	@title = "Orders to Approve"
   	@orders = Order.where(:status => "Created" )
     @line_items = LineItem.all
 
@@ -118,7 +120,7 @@ class OrdersController < ApplicationController
   	respond_to do |format|
       if @order.update_attributes(:status => Order::STATUS_TYPES[2])
         format.html { redirect_to(orders_url, :notice => 'Order approved.') }
-        format.xml  { head :ok }
+        format.xml  { head :no_content }
       else
       	format.html { render action: "index" }
         format.json { render json: @order.errors, status: :unprocessable_entity }

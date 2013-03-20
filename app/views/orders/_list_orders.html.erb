@@ -1,12 +1,14 @@
+<div class="CSSTableGenerator">
 <table>
   <tr>
-    <th>User</th>
-    <th>Name</th>
-    <th>Order details</th>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <td>User</td>
+    <td>Name</td>
+    <td>Order details</td>
+    <td>Status</td>
+    <td>Approval</td>
+    <td>Show</td>
+    <td>Edit</td>
+    <td>Destroy</td>
   </tr>
 
 <% @orders.each do |order| %>
@@ -15,19 +17,25 @@
     
     <td><% s = User.find_by_id(order.user_id) %><%= s.fullname %></td>
     <td>
+      <% d = 0 %>
 	  <% order.line_items.each do |l| %>
-	  	<%= l.product.title %> x <%= l.quantity %>
+	  <% s = order.line_items.size %>
+	  	<% d = d + 1 %>
+	  	<%= l.product.title %> x <%= l.quantity %> <% if d < s %> - <% end %>
 	  <% end %>
     </td> 
 	
     
     <td><%= order.status %></td>
+    <td>
     <% if order.status != "Approved" %>
-    <td><%= link_to 'Approve', order_approve_path(order), :method => :post %></td>
+    <%= link_to 'Approve', approve_path(order), :method => :put %>
     <% end %>
-    <td><%= link_to 'Show', order %></td>
-    <td><%= link_to 'Edit', edit_order_path(order) %></td>
-    <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </td>
+    <td><%= link_to 'Show', order, :class => "log-button3" %></td>
+    <td><%= link_to 'Edit', edit_order_path(order), :class => "log-button3" %></td>
+    <td><%= link_to 'Destroy', order, method: :delete, :class => "button3", data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
+</div>
