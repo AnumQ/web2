@@ -34,7 +34,7 @@
     </td>
     <td><%= link_to 'Show', order, :class => "log-button3" %></td>
     <td><%= link_to 'Edit', edit_order_path(order), :class => "log-button3" %></td>
-    <td><%= link_to 'Destroy', order, method: :delete, :class => "button3", data: { confirm: 'Are you sure?' } %></td>
+    <td><%= button_to 'Destroy', order, method: :delete, :class => "button3", data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

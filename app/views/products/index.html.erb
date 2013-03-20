@@ -11,13 +11,7 @@
 
 <% @products.each do |product| %>
   <tr class="<%=cycle('list_line_odd','list_line_even')%>">
-    <td class="list_description">
-		<dl>
-			<dt><%=product.title%></dt>
-			<dt><%=truncate(strip_tags(product.description),
-			:length=>80)%></dt>
-		</dl>
-	</td>
+    <td class="list_description"><%=product.title%></td>
     <td><%= image_tag(product.image_url, :class=> 'list_image', :size => "50x50") %></td>
     <td><span class="price"><%=sprintf("£%0.02f",product.price)%></span></td>
     <td><%= link_to 'Show', product, :class => "log-button2" %></td>
