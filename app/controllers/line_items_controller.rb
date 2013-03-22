@@ -2,7 +2,7 @@ class LineItemsController < ApplicationController
   # GET /line_items
   # GET /line_items.json
   before_filter :authorize
-   skip_before_filter :authorize, :only => [ :create, :remove_item, :insert_item, :destroy ]
+   skip_before_filter :authorize, :only => [ :create, :destroy, :remove_item, :insert_item, :destroy ]
   def index
   		@title = "Listing all Line Items"
     @line_items = LineItem.all
