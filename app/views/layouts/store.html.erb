@@ -64,7 +64,7 @@
 							<div class="label-bg">						
 							<ul>
 								<li>
-									<a title="Store" href="/store">Products</a>							
+									<a title="Store" href="/store">Hand Bags</a>							
 									
 								</li>
 							<% if user_signed_in? %>
@@ -72,14 +72,8 @@
 								<% if current_user.admin? %>
 
 								<li>
-									<a title="Store"  class="default" href="/products">Stock</a>							
-									<div class="dd">
-										<ul>
-											<li><a title="Product" href="#">Jeans</a></li>
-											<li><a title="Product" href="#">Hats</a></li>
-											<li><a title="Product" href="#">Outwear</a></li>
-										</ul>																
-									</div>
+									<a title="Store" href="/products">Stock</a>							
+									
 								</li>
 
 								<li>
@@ -87,9 +81,7 @@
 									<div class="dd">
 										<ul>
 											<li><a title="All Orders" href="/orders">All Orders</a></li>
-											<li><a title="Order Waiting Approval" href="#">Signed off</a></li>
-											<li><a title="Approved Orders" href="#">Waiting Approval</a></li>
-											<li><a title="Cancelled orders" href="#">Cancelled Orders</a></li>												
+											<li><a title="Approved Orders" href="/orders_waiting approval">Waiting Approval</a></li>											
 										</ul>
 									</div>
 								</li>

@@ -59,18 +59,18 @@
 						<% if user_signed_in? %>
 						  <% if current_user.admin? %>
 						    
-							<li><%= link_to 'Store', store_path, :class => 'log-button' %></li>
-							<li><%= link_to 'Products', products_path, :class => 'log-button' %></li>
+							<li><%= link_to 'Hand Bags', store_path, :class => 'log-button' %></li>
+							<li><%= link_to 'Stock', products_path, :class => 'log-button' %></li>
 							<li><%= link_to 'Orders', orders_path, :class => 'log-button' %></li>
 							<li><%= link_to 'Users', users_path, :class => 'log-button' %></li>
 						  <% else %>
-							<li><%= link_to 'Store', store_path, :class => 'log-button' %></li>						
+							<li><%= link_to 'Hand Bags', store_path, :class => 'log-button' %></li>						
 						    <li><%= link_to 'About', about_path, :class => 'log-button' %></li>
 						    <li><%= link_to 'Contact', contact_path, :class => 'log-button' %></li>
 							<li><%= link_to 'Help', help_path, :class => 'log-button' %></li>
 						  <% end %>
 						<% else %>
-						<li><%= link_to 'Store', store_path, :class => 'log-button' %></li>						
+						<li><%= link_to 'Hand Bags', store_path, :class => 'log-button' %></li>						
 						<li><%= link_to 'About', about_path, :class => 'log-button' %></li>
 						<li><%= link_to 'Contact', contact_path, :class => 'log-button' %></li>
 						<li><%= link_to 'Help', help_path, :class => 'log-button' %></li>
