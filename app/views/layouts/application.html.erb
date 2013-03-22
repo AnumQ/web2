@@ -6,6 +6,7 @@
 <%= stylesheet_link_tag "style", "style2", "jquery.jscrollpane", :media => "all" %>
   <%= javascript_include_tag "rails.validations", "placeholder" %>
   <%= csrf_meta_tags %>
+</head>
 <body>	
 	<!-- Wrapper -->
 	<div id="wrapper">
@@ -15,20 +16,11 @@
 				<div id="header">
 					<!-- Logo -->
 					<h1 id="logo"><a title="Home" href="#">accessories store</a></h1>
-					<!-- Search -->
-					<div class="search-expand"></div>
-					<div id="search">
-						<div class="retract-button">
-							<p>retract</p>
-						</div>
-						<form action="" method="post">
-							<input type="text" class="field" value="Search" title="Search" />
-							<input type="submit" value="" class="submit-button" />
-						</form>						
-					</div>
+					<p class="shopping-cart">
+					<a class="cart" href="/display_cart" title="Your Shopping Cart">
+					Your Shopping Cart</a><span>Items:</span>&nbsp;<%= t1 %><span>Cost: £<%= t2 %></span>&nbsp;</p>					
 					<!-- END Search -->
-					<div class="cl"></div>
-					<!-- Navigation -->					
+					<div class="cl"></div>			
 					<!-- Navigation -->					
 					<% if user_signed_in? %> 
 					<div id="nav-log">
@@ -53,12 +45,20 @@
 					<div class="cl"></div>				
 					<!-- END Navigation -->
 					<div class="cl"></div>
-				</div>
+				
+				<% if user_signed_in? %>
+						  <% if current_user.admin? %>
+						  <div id="admin">
+							<h1> Admin Interface - Resctricted Access </h1>
+						  </div>
+						 <%end %>
+					<%end %>
 				
 				<div id="navigation" class="sep" >
 					<ul>
 						<% if user_signed_in? %>
 						  <% if current_user.admin? %>
+						    
 							<li><%= link_to 'Store', store_path, :class => 'log-button' %></li>
 							<li><%= link_to 'Products', products_path, :class => 'log-button' %></li>
 							<li><%= link_to 'Orders', orders_path, :class => 'log-button' %></li>
@@ -76,12 +76,10 @@
 						<li><%= link_to 'Help', help_path, :class => 'log-button' %></li>
 						<% end %>
 					</ul>				
+				</div>				
+			</div>
+			<div class="rom">
 				</div>
-				
-				  
-				<div class="rom">
-					</div>
-				
 				<% if notice || alert %> 
 					<div id="flash">
 					<p class="notice"><%= notice %></p>

@@ -31,6 +31,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'client_side_validations'
+gem 'google-webfonts'
 
 group :production do
   gem 'pg', '0.12.2'

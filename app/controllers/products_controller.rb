@@ -2,9 +2,9 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   before_filter :authorize
-  skip_before_filter :authorize, :only => [ :show ]
+  skip_before_filter :authorize, :only => [ :show, :search ]
   before_filter :authorize_admin
-  skip_before_filter :authorize_admin, :only => [ :show ]
+  skip_before_filter :authorize_admin, :only => [ :show, :search ]
   def who_bought
 	@product=Product.find(params[:id])
 	respond_to do |format|
@@ -12,6 +12,12 @@ class ProductsController < ApplicationController
       format.xml{render :xml => @product }
     end
   end
+
+  def search
+    @products = Product.search params[:q]
+  end
+
+
   
   def index
   	@title = "Listing Products"

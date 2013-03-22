@@ -1,14 +1,29 @@
-<p id="notice"><%= notice %></p>
-
+<div id="">
 <p>
   <b>Name:</b>
-  <%= @user.username %>
+  <%= @user.fullname %>
 </p>
 
+<p>
+  <b>Address:</b>
+  <%= @user.address1 %><br/>
+  <%= @user.address2 %><br/>
+  <%= @user.address3 %><br/>
+  <%= @user.postcode %><br/>
+  <%= @user.city %><br/>
+  <%= @user.country %><br/>
+</p>
+<br/>
 <p>
   <b>Email:</b>
   <%= @user.email %>
 </p>
 
+<p> 
+	<b>Total Orders: </b>
+	<%= @user.orders.size %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+</div>

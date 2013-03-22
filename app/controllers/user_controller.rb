@@ -10,6 +10,11 @@ class UserController < ApplicationController
     @user = User.new
   end
 
+  def show
+  	@user = User.find(params[:id])
+  	@title = "Show User #{@user.fullname}"
+  end
+
   def create
     @user = User.new(params[:user])
     if @user.save
@@ -22,6 +27,7 @@ class UserController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
+
   end
   
   def update

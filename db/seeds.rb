@@ -33,18 +33,8 @@ User.create(:fullname => "local",
 			:password_confirmation => "google",
 			:admin => false)
 Product.delete_all
+
 Product.create(:title=>'Jeans',
 				:description=> 'Blue',
 				:image_url=> (File.join(Rails.root, '/app/assets/images/img02.jpg' ) ),
 				:price=> 49.50)
-#Product.create(name: 'Blue Jeans', 
-#			   description: 'Good quality jeans', 
-#			   price: '29', 
-#			   image: (File.open(File.join(Rails.root, '/app/assets/images/img02.jpg' ) ) ) )
-#
-
-
-#Product.create(name: 'Brown Hat', 
-#			   description: 'Good quality jeans', 
-#			   price: '29', 
-#			   image: (File.open(File.join(Rails.root, '/app/assets/images/img05.png')) ) )

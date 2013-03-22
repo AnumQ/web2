@@ -1,0 +1,5 @@
+<%= form_tag( :controller => "products", :action => "search", :method => "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= search_field_tag(:q) %>
+  <%= submit_tag("Search", :class => "button3") %>
+<% end %>

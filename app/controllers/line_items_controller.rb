@@ -2,8 +2,9 @@ class LineItemsController < ApplicationController
   # GET /line_items
   # GET /line_items.json
   before_filter :authorize
-   skip_before_filter :authorize, :only => :create
+   skip_before_filter :authorize, :only => [ :create, :remove_item, :insert_item, :destroy ]
   def index
+  		@title = "Listing all Line Items"
     @line_items = LineItem.all
 
     respond_to do |format|
@@ -15,6 +16,7 @@ class LineItemsController < ApplicationController
   # GET /line_items/1
   # GET /line_items/1.json
   def show
+  	@title = "Show Line Item"
     @line_item = LineItem.find(params[:id])
 
     respond_to do |format|
@@ -26,6 +28,7 @@ class LineItemsController < ApplicationController
   # GET /line_items/new
   # GET /line_items/new.json
   def new
+  	@title = "Create new Line"
     @line_item = LineItem.new
 
     respond_to do |format|
@@ -36,6 +39,7 @@ class LineItemsController < ApplicationController
 
   # GET /line_items/1/edit
   def edit
+  	@title = "Edit Line"
     @line_item = LineItem.find(params[:id])
   end
 
@@ -61,6 +65,41 @@ class LineItemsController < ApplicationController
     end
   end
 
+  def remove_item
+  	@cart = current_cart
+  	@line_item = LineItem.find(params[:id])
+  	product = @line_item.product
+    @line_item = @cart.remove_product(product.id)
+
+
+    respond_to do |format|
+      if @line_item.update_attributes(params[:line_item])
+        format.html { redirect_to(display_cart_path, notice: 'Item was successfully removed.' ) }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to(display_cart_path, notice: 'Item was not removed.' )  }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end 
+
+  def insert_item
+  	@cart = current_cart
+  	@line_item = LineItem.find(params[:id])
+  	product = @line_item.product
+    @line_item = @cart.add_product(product.id)
+
+
+    respond_to do |format|
+      if @line_item.update_attributes(params[:line_item])
+        format.html { redirect_to(display_cart_path, notice: 'Quantity was successfully increased.' ) }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to(display_cart_path, notice: 'Quantity was not increased.' )  }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end 
   # PUT /line_items/1
   # PUT /line_items/1.json
   def update
@@ -84,7 +123,7 @@ class LineItemsController < ApplicationController
     @line_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to line_items_url }
+      format.html { redirect_to(display_cart_path, notice: 'Product removed from the basket.' ) }
       format.json { head :no_content }
     end
   end

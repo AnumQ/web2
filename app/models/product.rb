@@ -13,6 +13,11 @@ class Product < ActiveRecord::Base
   def total_price
 	line_items.to_a.sum { |item| item.total_price }
   end
+
+  def self.search(search)
+    search_condition = "%" + search + "%"
+    find(:all, :conditions => ['title LIKE ? OR description LIKE ?', search_condition, search_condition])
+  end
 	
   private
 #ensurethatthereareno lineitemsreferencingthisproduct

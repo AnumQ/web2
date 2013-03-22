@@ -11,7 +11,7 @@ module ApplicationHelper
   end
 
   def full_title(page_title)                          # Method definition
-    base_title = "E-shop"  # Variable assignment
+    base_title = "Ring Outlet Fashion Handbags and Purses"  # Variable assignment
     if page_title.empty?                              # Boolean test
       base_title                                      # Implicit return
     else

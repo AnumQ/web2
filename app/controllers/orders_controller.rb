@@ -30,6 +30,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @order = Order.find(params[:id])
+    @title = "Show Order Details"
 
     respond_to do |format|
       format.html # show.html.erb

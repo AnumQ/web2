@@ -1,3 +1,6 @@
+<br />
+<%= render 'search' %>
+  
 <div class="CSSTableGenerator">
 <table>
   <tr>
@@ -13,7 +16,7 @@
   <tr class="<%=cycle('list_line_odd','list_line_even')%>">
     <td class="list_description"><%=product.title%></td>
     <td><%= image_tag(product.image_url, :class=> 'list_image', :size => "50x50") %></td>
-    <td><span class="price"><%=sprintf("£%0.02f",product.price)%></span></td>
+    <td><span class="price"><%= sprintf("£%0.02f", product.price) %></span></td>
     <td><%= link_to 'Show', product, :class => "log-button2" %></td>
     <td><%= link_to 'Edit', edit_product_path(product), :class => "log-button2" %></td>
     <td><%= button_to 'Destroy', product, method: :delete, :class => "button2", data: { confirm: 'Are you sure?' } %></td>

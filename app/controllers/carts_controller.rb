@@ -10,10 +10,14 @@ class CartsController < ApplicationController
   	@title = "Your Shopping Cart"
   	@cart = current_cart
 
-    respond_to do |format|
-      format.html { render action: "show" }
-      format.json { render json: @cart }
-    end
+	if @cart.line_items.size == 0
+		redirect_to store_url, :notice => "Your cart is empty, please add a product to basket before proceeding."
+	else
+		respond_to do |format|
+		format.html { render action: "show" }
+		format.json { render json: @cart }
+		end
+	end
   end
 
   def index

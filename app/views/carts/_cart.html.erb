@@ -4,26 +4,45 @@
 	  <% @items = cart.line_items %>
 	  <% @items.each do |item| %>
 	<tr>
-   		 <td><%= image_tag(item.product.image_url, :size => "150x250") %></td>
+   		 <td><%= image_tag(item.product.image_url, :size => "80x130") %></td>
    		 <td class="title"><%= item.product.title %></td>
-	     <td class="quantity"><a>Quantity:</a><%= item.quantity %></td>
+	     <td class="quantity"><p>Quantity:</p>
+
+	     	<div class="kil"><%= item.quantity %> </div>
+	     	<div id="min"><%= link_to image_tag("images/min2.png", :size => "21x20") , remove_line_items_path(item), :method => :put, :title => "Change Quantity" %> </div>
+	     	 <div id="plus"><%= link_to image_tag("images/plus1.png", :size => "22x22") , insert_items_path(item), :method => :put, :title => "Change Quantity" %> </div>
+	     </td>
 	     <td><div id="price2"><p class="w">Price</p><br />
-	     <p class="q"><%= item.quantity %> x <%= item.product.price %> = <%= item.total_price %></p></div></td>
+	     <p class="q"><%= item.quantity %> x <%= item.product.price %> = <%= item.total_price %></p></div>
+	     <div id="area">
+	     	<div class="remove"><%= link_to 'Delete', item, :method => :delete, :title => "Remove Item", :class => "button3" %><br/> </div>
+	     </div>
+	     </td>
+
 	 <% end %>
 	</tr>
     <tr>
 	  	<td></td>
 	  	<td></td>
 	  	<td></td>
-	  	<td><div id="sum1"><p class="ika">Total</p><p class="ika2"><%= sprintf("£%0.02f",cart.total_price)%></p></div></td>
+	  	<% if cart.line_items.size != 0 %>
+	  	<td><div id="sum1"><p class="ika">Total</p>
+	  	<p class="ika2"><%= sprintf("£%0.02f",cart.total_price)%></p>
+	  	</div>  	
+	  	</td>	  	
 	</tr>
 	</table>
 
+	
+	
 	<div id="checkout">
 		<div id="b2">
 		<%= button_to "Checkout", new_order_path, :method => :get, :class => "button" %></div>
 		<div id="b1">
 		<%= button_to 'Empty cart', cart, :method => :delete, :class => "log-button", :confirm=> 'Are you sure?' %></div>
 	</div>
+	<% else %>
+	<%= link_to 'Back to the Store', store_path, :class => "button3" %>
+	<% end %>
   </div>
 </div>

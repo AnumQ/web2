@@ -2,6 +2,27 @@ class ApplicationController < ActionController::Base
   #before_filter :authorize_admin
   protect_from_forgery
   before_filter :initialize_cart
+
+
+   helper_method :t1
+   helper_method :t2
+
+     helper_method :pp
+
+   def pp
+   		price = product.price
+   		"#{price}"
+   end
+
+  def t1
+  	sum = current_cart.total
+    "#{sum}"
+  end
+
+  def t2
+  	sum = current_cart.total_price
+    "#{sum}"
+  end
   
   private   	
     def current_cart
@@ -17,6 +38,14 @@ class ApplicationController < ActionController::Base
 	end
 
   protected
+  	  def total
+	current_cart.line_items.to_a.sum { |item| item.quantity }
+  end
+  
+  def total_price
+	current_cart.line_items.to_a.sum { |item| item.total_price }
+  end
+
   	def initialize_cart
   		Cart.find(session[:cart_id])
 		rescue ActiveRecord::RecordNotFound
