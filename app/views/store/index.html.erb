@@ -1,7 +1,7 @@
 <% @products.each do |product| %>
 <div id="product-wrapper">
 	<div class="product">
-		<div class="im2"><%= link_to image_tag(product.image_url, :class=> 'im', :size => "100x150"), product %></div>
+		<div class="im2"><%= link_to image_tag(product.image_url, :class=> 'im', :size => "100x100"), product %></div>
 		<div class="desc">
 			<p class="name"><%= link_to product.title, product %></p>
 			<p><%=truncate(strip_tags(product.description),:length=>40)%></p>
