@@ -57,6 +57,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+  	@title = "Edit Product"
     @product = Product.find(params[:id])
   end
 

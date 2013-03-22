@@ -7,7 +7,6 @@
     <td>Status</td>
     <td>Approval</td>
     <td>Show</td>
-    <td>Edit</td>
     <td>Destroy</td>
   </tr>
 
@@ -33,7 +32,6 @@
     <% end %>
     </td>
     <td><%= link_to 'Show', order, :class => "log-button3" %></td>
-    <td><%= link_to 'Edit', edit_order_path(order), :class => "log-button3" %></td>
     <td><%= button_to 'Destroy', order, method: :delete, :class => "button3", data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

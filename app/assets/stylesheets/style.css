@@ -455,6 +455,12 @@ span.label-right { display: block; float: left; width: 32px; height: 42px; backg
 .table1 { border: 1px solid; margin: 25px 50px 50px 25px; margin-right: auto; margin-left: auto; padding: 50px 50px 50px 50px; }
 .field2 { float: right; position: relative; margin-right: 250px; margin-bottom: 20px;}
 
+#order_show { font-size: 16px; padding-left: 50px; padding-top: 20px; }
+#order_show .field { margin-bottom: 20px; } 
+#order_show .field p { font-weight: bold; text-decoration: underline;}
+#order_show .field table { margin-left: 20px;}
+#order_show .field table td { font-weight: bold;}
+.marginal { margin-left: 50px; }
 #product_fields { margin-left: 20px; margin-top: 20px; } 
 #product_fields .fields { margin-bottom: 10px; font-size: 16px; font-weight: bold; }
 #listing { background-color: ;}

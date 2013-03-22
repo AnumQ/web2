@@ -1,10 +1,10 @@
-<p>
-  <b>Name:</b>
-  <%= @order.user.fullname %>
-</p>
+<div id="order_show">
+<div class="field">
 
-<p>
-  <b>Address:</b><br />
+    <p>Name:</p><%= @order.user.fullname %>
+</div> 
+
+  <div class="field"><p>Address:</p>
   <%= @order.user.address1 %><br />
   <%= @order.user.address2 %><br />
   <% if @order.user.address3.nil? %>
@@ -13,28 +13,27 @@
   <% end %>
   <%= @order.user.postcode %><br />
   <%= @order.user.city %>
-</p>
 
-<p>
-  <b>Order details:</b><br />
+</div>
+<div class="field">
+	<p>Order details:</p>
   <table>
   		<%=render(@order.line_items)%>
   			<tr class="total_line">
   			<td colspan="2">Total</td>
-  			<td class="total_cell"><%= sprintf("£%0.02f",@order.total_price)%></td>
+  			<p><td class="total_cell"><%= sprintf("£%0.02f",@order.total_price)%></p></td>
   		
    </table>
-</p>
-
-<p>
-  <b>Order status:</b><br />
+</div>
+<div class="field">
+<p>Order status:</p>
   <%= @order.status %>
-</p>
- 
-<p> Order date:
+</div>
+<div class="field">
+<p> Order date: </p>
 	<%= @order.created_at %>
- </p>
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+ </div>
+<%= link_to 'Edit', edit_order_path(@order), :class => "log-button" %> |
+<%= link_to 'Back', orders_path, :class => "log-button"%>
 
-
+</div>
