@@ -64,7 +64,7 @@
 							<div class="label-bg">						
 							<ul>
 								<li>
-									<a title="Store"  class="default" href="/products">Products</a>							
+									<a title="Store"  class="default" href="/store">Products</a>							
 									<div class="dd">
 										<ul>
 											<li><a title="Product" href="#">Jeans</a></li>
@@ -75,7 +75,18 @@
 								</li>
 							<% if user_signed_in? %>
 															 
-								<% if current_user.admin? %>	
+								<% if current_user.admin? %>
+
+								<li>
+									<a title="Store"  class="default" href="/products">Stock</a>							
+									<div class="dd">
+										<ul>
+											<li><a title="Product" href="#">Jeans</a></li>
+											<li><a title="Product" href="#">Hats</a></li>
+											<li><a title="Product" href="#">Outwear</a></li>
+										</ul>																
+									</div>
+								</li>
 
 								<li>
 									<a title="Orders"  class="default" href="/orders">Orders</a>
@@ -96,17 +107,6 @@
 											<li><a title="Order Waiting Approval" href="#">Customers</a></li>
 											<li><a title="Approved Orders" href="#">Administrators</a></li>										
 										</ul>
-									</div>
-								</li>
-								<% else %>
-								<li>
-									<a title="Store" class="default" href="/products">Products</a>							
-									<div class="dd">
-										<ul>
-											<li><a title="Product" href="#">Jeans</a></li>
-											<li><a title="Product" href="#">Hats</a></li>
-											<li><a title="Product" href="#">Outwear</a></li>
-										</ul>							
 									</div>
 								</li>
 							<% end %>

@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+<div id="product_fields">
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -28,6 +28,8 @@
     <%= f.text_field :price %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Product", :class => "log-button" %>
+    <br />
   </div>
+</div>
 <% end %>

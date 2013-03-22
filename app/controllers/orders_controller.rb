@@ -41,6 +41,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   # GET /orders/new.json
   def new
+  	@title = "Order Details"
   	@current_user = current_user
   	@cart = current_cart
 	if @cart.line_items.empty?
@@ -78,7 +79,7 @@ class OrdersController < ApplicationController
 		session[:cart_id] = nil
         
         format.html{redirect_to(store_url,:notice =>
-		  'Thank you for your order.')}
+		  'Your order has been confirmed. Thank you for your order.')}
         format.xml {render :xml=> @order, :status => :created, :location => @order } 
       else
         format.html { render action: "new" }

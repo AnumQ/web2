@@ -10,36 +10,58 @@
       </ul>
     </div>
   <% end %>
-
+<div id="order_new">
   <div class="field"> 
-  	<strong>Name:</strong> 
-  	<%= current_user.fullname %>
+  	<p>Name: <a><%= current_user.fullname %></a><p>
   </div>
   
-  <div class="field"> 
-  	<strong>Address:</strong> 
-  	<%= current_user.address1 %>, <%= current_user.address2 %>, <%= current_user.address3 %>, <%=current_user.postcode  %>
+  <div class="address"> 
+  	<p>Address: 
+  	<a><%= current_user.address1 %>, <%= current_user.address2 %>, <%= current_user.address3 %>, <%=current_user.postcode  %></a></p>
   </div>
   <div class="field">
-  	 <strong>Order details:</strong>
-  	 <table>
-  		<%=render(@cart.line_items)%>
-  			<tr class="total_line">
-  			<td colspan="2">Total</td>
-  			<td class="total_cell"><%= sprintf("£%0.02f",@cart.total_price)%></td>
+  	<p> Order details:</p>
+
+
+	<table>
+	  <% @items = @cart.line_items %>
+	  <% @items.each do |item| %>
+		<tr>
+   		 <td><%= image_tag(item.product.image_url, :size => "40x60") %></td>
+   		 <td class="title"><%= item.product.title %></td>
+	     <td class="quantity"><p>Quantity:</p>
+
+	     	<div class="kil"><%= item.quantity %> </div>
+	     </td>
+	     <td><div id="price2"><p class="w">Price</p><br />
+	     <p class="q"><%= item.quantity %> x <%= item.product.price %> = <%= item.total_price %></p></div>
+	     </td>
+
+	 <% end %>
+	</tr>
+    <tr>
+	  	<td></td>
+	  	<td></td>
+	  	<td></td>
+	  	<td><div id="sum1"><p class="ika">Total</p>
+	  	<p class="ika2"><%= sprintf("£%0.02f",@cart.total_price)%></p>
+	  	</div>  	
+	  	</td>	  	
+	</tr>
   		
 	</table>
   </div>	 
   <br/>
   
-  <div class="field">
-  </div>
-  <div class="field">
-    <%= f.label :pay_type %><br />
+
+  <div class="field field2">
+    <p><%= f.label :pay_type %><p><br />
     <%= f.select :pay_type, Order::PAYMENT_TYPES,
     	:prompt => 'Select a payment method' %>
+  
+	  <div class="actions">
+	    <%= f.submit 'Confirm', :class => "log-button" %>
+	  </div>
   </div>
-  <div class="actions">
-    <%= f.submit 'Confirm' %>
-  </div>
+</div>
 <% end %>
