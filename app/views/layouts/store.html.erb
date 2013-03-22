@@ -22,13 +22,12 @@
 					Your Shopping Cart</a><span>Items:</span>&nbsp;<%= t1 %><span>Cost: £<%= t2 %></span>&nbsp;</p>					
 					<div id="search-field">
 							<%= form_tag( :controller => "store", :action => "search", :method => "get" ) do %>
-							   <%= search_field_tag "", :Search, :class => "text" %>
+							   <%= text_field_tag "q", :q, :class => "text" %>
 							   <%= submit_tag "Go", :class => "submit-button", :class => "button3" %>
 							<% end %>
 					</div>
 					<!-- END Search -->
-					<div class="cl"></div>
-					
+					<div class="cl"></div>					
 					<% if user_signed_in? %>
 						  <% if current_user.admin? %>
 						  <div id="admin">

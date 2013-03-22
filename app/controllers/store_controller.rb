@@ -11,7 +11,7 @@ class StoreController < ApplicationController
   	@title = "Listing Results"
     @products = Product.search params[:q]
         respond_to do |format|
-      format.html { redirect_to(store_search_url)}
+      format.html { render "index" }
       format.json { render json: @products }
     end
   end
