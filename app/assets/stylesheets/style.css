@@ -584,7 +584,7 @@ margin-left: 300px;
 
 #search-field  .text {
 	margin-bottom: 10px;
-	width: 80%;
+	width: 70%;
 	height: 30px;
 	position: relative;
 	font-size: 14px;
@@ -655,7 +655,8 @@ margin-left: 300px;
 #newsletter .field-holder input { border: none; background: none; padding: 6px 0 8px; width: 229px; }
 #newsletter .field-holder input { font-size: 15px; font-weight: bold; line-height: 17px; color: #1fb0e2; }
 
-#search-field { margin-top: 15px; width: 250px; display: block; top: 10px; background-color: ; float: right;}
+#search-field { margin-top: 15px; width: 200px; background-color: ; float: right;}
+#search-area { float: right; }
 #search-b { padding-top: 17px; width: 257px; }
 #search-b .submit-button { display: block; float: right; width: 120px; height: 39px; background: url(images/subscribe.png) no-repeat 0 0; }
 #search-b .submit-button p { margin-bottom: 20px; padding: 10px 0 12px 18px; line-height: 19px; width: 120px; text-align: left; background: none; border: none; cursor: pointer; }

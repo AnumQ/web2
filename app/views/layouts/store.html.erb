@@ -21,10 +21,12 @@
 					<p class="shopping-cart"><a class="cart" href="/display_cart" title="Your Shopping Cart">
 					Your Shopping Cart</a><span>Items:</span>&nbsp;<%= t1 %><span>Cost: £<%= t2 %></span>&nbsp;</p>					
 					<div id="search-field">
+						<div id="search-area">
 							<%= form_tag( :controller => "store", :action => "search", :method => "get" ) do %>
 							   <%= text_field_tag "q", :q, :class => "text" %>
 							   <%= submit_tag "Go", :class => "submit-button", :class => "button3" %>
 							<% end %>
+						</div>
 					</div>
 					<!-- END Search -->
 					<div class="cl"></div>					
